@@ -43,7 +43,7 @@ router.put("/:id", (req, res) => {
   }
 
   try {
-    res.json(store.updateUser(id, { name, email }));
+    res.json(store.updateUser(id, { name: name.trim(), email: email.trim() }));
   } catch (err) {
     if (err.code === "USER_NOT_FOUND") {
       return res.status(404).json({ error: "User not found" });
